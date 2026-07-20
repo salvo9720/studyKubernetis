@@ -58,3 +58,11 @@ EOF
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
 
 3) prendi il token dalla console e usalo per autenticarti
+
+
+dashboard minicube:
+2) minikube dashboard
+
+
+verifica cluster attivo: 
+1) kubectl config get-contexts
