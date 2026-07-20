@@ -12,3 +12,7 @@ kubectl logs pod appdb-56f9567c8f-57hd6
 
 # apply 
 kubectl apply -f appDeploymentWithInit.yaml: -f indica il file da eseguire
+
+
+# isntallazione k9s per vedere i log 
+segui questa guida è ok per ubuntu
