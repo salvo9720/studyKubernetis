@@ -37,6 +37,7 @@ spec:
           ports:
             - containerPort: 63306
               protocol: TCP
+          restartPolicy: Always
           readinessProbe:
             tcpSocket:
               port: 3306

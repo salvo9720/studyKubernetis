@@ -16,3 +16,7 @@ kubectl apply -f appDeploymentWithInit.yaml: -f indica il file da eseguire
 
 # isntallazione k9s per vedere i log 
 segui questa guida è ok per ubuntu
+
+
+# vedere i log del cluster
+kubectl describe pod podId
