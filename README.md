@@ -1,5 +1,7 @@
 # studykubernetis
 
+fonte: guida isntallazione k8s su wsl2 : https://kubernetes.io/blog/2020/05/21/wsl-docker-kubernetes-on-the-windows-desktop/
+
 creazione nodi da file yaml: 
 1) kind create cluster --name mycluster --config kind-config.yaml
 
@@ -20,3 +22,39 @@ killare kube proxy e rilanciarlo:
 2) kill 82923 
 3) kubectl proxy
 
+
+
+-------------------------
+
+## Creazione utenti:
+
+1) 
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+EOF
+# Create a ClusterRoleBinding for the ServiceAccount
+kubectl apply -f - <<EOF
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+EOF
+
+
+2) 
+
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+
+3) prendi il token dalla console e usalo per autenticarti
