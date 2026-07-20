@@ -1,59 +1,51 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
-  name: appdb
+  name: magicball
   labels:
-    app: appdb
-
+    app: magicball
 spec:
-  replicas: 3
-
+  replicas: 1
   selector:
     matchLabels:
-      app: appdb
-
+      app: magicball
   template:
     metadata:
       labels:
-        app: appdb
-
+        app: magicball
     spec:
+      initContainers:
+      - name: magicball-init
+        image: docker.io/gbsal/magicball-init
+        env:
+        - name: APPDB_USER
+          value: "testuser"
+        - name: APPDB_PASS
+          value: "mypa55"
+        - name: APPDB_NAME
+          value: "magicball"
       containers:
-        - name: appdb
-          image: docker.io/mariadb:latest
-          imagePullPolicy: Always
-
-          env: 
-            - name: MYSQL_USER
-              value: "testuser"
-            - name: MYSQL_PASSWORD
-              value: "mypa55"
-            - name: MYSQL_ROOT_PASSWORD
-              value: "r00tpa55"
-            - name: MYSQL_DATABASE
-              value: "magicball"
-
-          ports:
-            - containerPort: 63306
-              protocol: TCP
-          restartPolicy: Always
-          readinessProbe:
-            tcpSocket:
-              port: 3306
-            initialDelaySeconds: 15
-            periodSeconds: 10
-
-          livenessProbe:
-            tcpSocket:
-              port: 3306
-            initialDelaySeconds: 30
-            periodSeconds: 20
-
-          resources:
-            requests:
-              cpu: "250m"
-              memory: "256Mi"
-            limits:
-              cpu: "500m"
-              memory: "512Mi"
+      - name: magicball-server
+        image: docker.io/gbsal/magicball-server
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: APPDB_USER
+          value: "testuser"
+        - name: APPDB_PASS
+          value: "mypa55"
+        - name: APPDB_NAME
+          value: "magicball"
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        restartPolicy: Always
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
