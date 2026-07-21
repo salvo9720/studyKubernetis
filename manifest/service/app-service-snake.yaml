@@ -97,11 +97,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - snake.test.it
+        - snake.test.local
       secretName: hello-world-tls
 
   rules:
-    - host: snake.test.it
+    - host: snake.test.local
       http:
         paths:
           - path: /

@@ -52,3 +52,38 @@ collegati a minicube
 1) minikube ssh
 lancia dentro un iptables 
 2) sudo iptables -t nat -L KUBE-NODEPORTS -n -v
+
+
+## attivazione ignresss minucube 
+1) minikube addons enable ingress
+
+# per aprire il tunnel e raggiugerlo da browser 
+1) minikube tunnel
+
+2) aggiungere i domini nel file hosts widnwos:
+127.0.0.1 snake.test.it
+127.0.0.1 nginx.test.it
+
+
+# generazione certificati per https
+1) mkdir certs
+2) cd certs
+3) openssl genrsa -out snake.test.local.key 2048
+4) openssl req -x509 \
+  -new \
+  -nodes \
+  -key snake.test.local.key \
+  -sha256 \
+  -days 365 \
+  -out snake.test.local.crt \
+  -subj "/CN=snake.test.local"
+
+
+## creazione del secret con i certificati 
+1) kubectl create secret tls hello-world-tls \
+  --cert=snake.test.local.crt \
+  --key=snake.test.local.key
+
+2) kubectl get secret
+
+3) aggiorna l'ingress con i certificati
