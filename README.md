@@ -71,3 +71,9 @@ dashboard minicube:
 
 verifica cluster attivo: 
 1) kubectl config get-contexts
+
+
+
+## collegare minicube ad un indirizzo raggiungibile da browser 
+1) minikube service nginx-nodeport --url
+lasciare il terminale aperto per raggiungerlo, nginx-nodeport è il nome del servizio

@@ -40,3 +40,15 @@ vediamo tutte le variabili al suo interno
 otteniamo i secret di dbsecret
 - o yaml: output in formato yaml
 vederemo i secret criptati in base 64, ma dentro il pod kubenetis gleieldescripta per questo conviene accedere ai secret del pod
+
+
+
+# rete kubernetis
+1) ogni pod ha il propio indirizzo ip, l'esterno non puo comunciare con la rete e solo visibile per k8s, i pod posso comunciare senza i nat, e si parlano come se fossero nella stessa macchina. 
+
+
+## per vedere le regole aggiuntive di ip tables: 
+collegati a minicube 
+1) minikube ssh
+lancia dentro un iptables 
+2) sudo iptables -t nat -L KUBE-NODEPORTS -n -v
