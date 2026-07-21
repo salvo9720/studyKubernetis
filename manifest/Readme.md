@@ -24,3 +24,19 @@ kubectl describe pod podId
 # avvi minikube
 1) minikube start:
 se fatto senza questo comando il control-panel non sara avviato e no nsara possibile connettersi ai nodi
+
+# eseguire un comando dentro il pod kubernetis 
+1) kubectl exec -n test-namespace -it pod-configmap -- sh
+dopo -n il nome del namespace 
+dopo -it il nome del pod
+
+## dentro il pod con il comando:
+2) env: 
+vediamo tutte le variabili al suo interno 
+
+
+## secret e dati 
+1) kubectl get secret db-secret -n test-namespace -o yaml
+otteniamo i secret di dbsecret
+- o yaml: output in formato yaml
+vederemo i secret criptati in base 64, ma dentro il pod kubenetis gleieldescripta per questo conviene accedere ai secret del pod
