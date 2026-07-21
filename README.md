@@ -52,12 +52,17 @@ subjects:
   namespace: kubernetes-dashboard
 EOF
 
+## creazioen token 
+2) kubectl -n kubernetes-dashboard create token admin-user
 
-2) 
+3) 
 
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
 
-3) prendi il token dalla console e usalo per autenticarti
+4) prendi il token dalla console e usalo per autenticarti
+
+
+-------------------------------------
 
 
 dashboard minicube:

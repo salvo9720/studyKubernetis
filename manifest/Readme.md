@@ -20,3 +20,7 @@ segui questa guida è ok per ubuntu
 
 # vedere i log del cluster
 kubectl describe pod podId
+
+# avvi minikube
+1) minikube start:
+se fatto senza questo comando il control-panel non sara avviato e no nsara possibile connettersi ai nodi
