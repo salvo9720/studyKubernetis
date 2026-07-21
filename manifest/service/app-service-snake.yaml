@@ -76,7 +76,7 @@ metadata:
     app: hello-world
 
 spec:
-  type: NodePort
+  type: ClusterIP
 
   selector:
     app: hello-world
@@ -84,7 +84,6 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30081
 
 ---
 apiVersion: networking.k8s.io/v1
