@@ -79,3 +79,13 @@ verifica cluster attivo:
 ## collegare minicube ad un indirizzo raggiungibile da browser 
 1) minikube service nginx-nodeport --url
 lasciare il terminale aperto per raggiungerlo, nginx-nodeport è il nome del servizio
+
+
+
+## instalalzione servizio per fare loadbalancer in minikube
+1) kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.16.1/config/manifests/metallb-native.yaml
+
+2) docker network inspect minikube:
+per conoscere gli indirizzi ip usabili, prendi la parte di:
+"Subnet": "192.168.49.0/24",
+"Gateway": "192.168.49.1"

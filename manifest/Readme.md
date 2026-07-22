@@ -22,7 +22,7 @@ segui questa guida è ok per ubuntu
 kubectl describe pod podId
 
 # avvi minikube
-1) minikube start:
+1) minikube start
 se fatto senza questo comando il control-panel non sara avviato e no nsara possibile connettersi ai nodi
 
 # eseguire un comando dentro il pod kubernetis 
@@ -87,3 +87,8 @@ lancia dentro un iptables
 2) kubectl get secret
 
 3) aggiorna l'ingress con i certificati
+
+
+## avvio servizio loadBalancacer
+1)  minikube service nginx-loadbalancer tunnel
+aprira anche la scheda una volta che il load balancer è pronto 
