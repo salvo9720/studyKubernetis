@@ -92,3 +92,18 @@ lancia dentro un iptables
 ## avvio servizio loadBalancacer
 1)  minikube service nginx-loadbalancer tunnel
 aprira anche la scheda una volta che il load balancer è pronto 
+
+
+# creazione namespace da cli 
+1) kubectl create ns dev
+
+# vedere realtime i pod che salgono
+1) kubectl get po -n dev -w
+-w : watch 
+
+
+# ordine creazione accoutn e service account:
+1) service account
+2) role 
+3) roleBinding
+4) pod 
