@@ -11,13 +11,15 @@ approta modifiche al cluster gia creato:
 
 
 creazione dashboard: 
-1) kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc6/aio/deploy/recommended.yaml
+1) kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+1.1) kubectl apply -f dashboard-admin.yaml
 2) kubectl get all -n kubernetes-dashboard
 3) kubectl proxy
-3.1) kill del proxy pkill -f "kubectl proxy"
 4) vai su browser in http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
-4.1) oppure qui: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/workloads?namespace=default
 5) ogni volta che ricrei k8s bisogna far ripartire il proxy.
+
+# kill vecchio proxy 
+1) pkill -f "kubectl proxy"
 
 killare kube proxy e rilanciarlo:
 1) ps -ef | grep "kubectl proxy" (identificato il pid 82923)
