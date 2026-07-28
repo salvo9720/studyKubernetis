@@ -119,3 +119,7 @@ aprira anche la scheda una volta che il load balancer è pronto
 
 # uso di kompose partendo da file docker
 1) kompose convert -f docker-compose.yml 
+
+
+# restart kubelet 
+1) systemctl restart kubelet
