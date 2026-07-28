@@ -12,7 +12,6 @@ approta modifiche al cluster gia creato:
 
 creazione dashboard: 
 1) kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-1.1) kubectl apply -f dashboard-admin.yaml
 2) kubectl get all -n kubernetes-dashboard
 3) kubectl proxy
 4) vai su browser in http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/

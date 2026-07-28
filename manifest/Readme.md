@@ -107,3 +107,7 @@ aprira anche la scheda una volta che il load balancer è pronto
 2) role 
 3) roleBinding
 4) pod 
+
+
+# installazione zalando postgress manager
+1) kubectl apply -k github.com/zalando/postgres-operator/manifests
