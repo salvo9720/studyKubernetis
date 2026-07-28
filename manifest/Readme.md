@@ -111,3 +111,11 @@ aprira anche la scheda una volta che il load balancer è pronto
 
 # installazione zalando postgress manager
 1) kubectl apply -k github.com/zalando/postgres-operator/manifests
+
+
+# connessione con il il db con lo yaml di zalando 
+1)  kubectl exec -it acid-minimal-cluster-0 -- psql -U appuser -d appdb
+
+
+# uso di kompose partendo da file docker
+1) kompose convert -f docker-compose.yml 
