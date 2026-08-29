@@ -14,22 +14,25 @@ spec:
     spec:
       containers:
       - name: angular-fe
-        image: node:20.12.2
+        image: node:20.19.0
         command:
           - sh
           - -c
         args:
-          - npm install &&
+          - npm ci &&
+            echo "installaing playwright " &&
             npx playwright install --with-deps &&
-            npm run startDockerContainer
+            echo "container starting" &&
+            npm run startDockerContainer 
+          
         workingDir: /app
         resources:
           requests:
-            memory: "10Mi"
-            cpu: "10m"
-          limits:
-            memory: "128Mi"
+            memory: "1Gi"
             cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2"
         ports:
         - containerPort: 4200
 
@@ -37,7 +40,7 @@ spec:
           httpGet:
             path: /
             port: 4200
-          initialDelaySeconds: 30
+          initialDelaySeconds: 800
           periodSeconds: 15
 
 --- 
